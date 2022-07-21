@@ -15,7 +15,6 @@ export default function Form({ updateAnswersList, answerToEdit }) {
 
   useEffect(() => {
     if (answerToEdit.length > 0) {
-      console.log("answer to be edited", answerToEdit);
       setUserAnswer(answerToEdit[0]);
     }
   }, [answerToEdit]);
@@ -37,7 +36,6 @@ export default function Form({ updateAnswersList, answerToEdit }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(userAnswer);
     updateAnswersList(userAnswer);
     setUserAnswer(initialData);
   }
