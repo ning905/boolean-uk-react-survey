@@ -20,7 +20,7 @@ function ItemsList({ list }) {
 
 // This is the main component being exported from this file
 export default function AnswersItem(props) {
-  const { answerItem, editAnswer } = props;
+  const { answerItem, editAnswer, deleteAnswer } = props;
   const { username, color, spendTime, review } = answerItem;
 
   return (
@@ -46,6 +46,14 @@ export default function AnswersItem(props) {
           onClick={() => editAnswer(answerItem)}
         >
           Edit
+        </button>
+
+        <button
+          type="button"
+          className="delete-button"
+          onClick={() => deleteAnswer(answerItem)}
+        >
+          Delete
         </button>
       </article>
     </li>

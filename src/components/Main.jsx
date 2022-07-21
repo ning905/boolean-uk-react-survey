@@ -7,18 +7,25 @@ function Main() {
 
   const [answersList, setAnswersList] = useState([]);
   const [answerToEdit, setAnswerToEdit] = useState([]);
+  const [answerID, setAnswerID] = useState(0);
+  console.log("All answers: ", answersList);
 
   function updateAnswersList(newAnswer) {
-    let newAnswerList;
+    let newAnswerList = [...answersList, newAnswer];
 
     if (newAnswer.hasOwnProperty("id")) {
-      newAnswerList = answersList.map((answer) =>
-        answer.id === newAnswer.id ? newAnswer : answer
-      );
+      const match = answersList.find((answer) => answer.id === newAnswer.id);
+
+      if (match) {
+        newAnswerList = answersList.map((answer) =>
+          answer.id === newAnswer.id ? newAnswer : answer
+        );
+      }
     } else {
-      newAnswer.id = answersList.length;
-      newAnswerList = [...answersList, newAnswer];
+      newAnswer.id = answerID;
+      setAnswerID(answerID + 1);
     }
+
     setAnswersList(newAnswerList);
   }
 
@@ -26,11 +33,23 @@ function Main() {
     setAnswerToEdit([answer]);
   }
 
+  function deleteAnswer(answerToDelete) {
+    const newAnswerList = answersList.filter(
+      (answer) => answer.id !== answerToDelete.id
+    );
+
+    setAnswersList(newAnswerList);
+  }
+
   return (
     <main className="main">
       <section className={`main__list ${open ? "open" : ""}`}>
         <h2>Answers list</h2>
-        <AnswersList answersList={answersList} editAnswer={editAnswer} />
+        <AnswersList
+          answersList={answersList}
+          editAnswer={editAnswer}
+          deleteAnswer={deleteAnswer}
+        />
       </section>
       <section className="main__form">
         <Form

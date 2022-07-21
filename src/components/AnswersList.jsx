@@ -1,7 +1,7 @@
 import AnswersItem from "./AnswersItem";
 
 export default function AnswersList(props) {
-  const { answersList, editAnswer } = props;
+  const { answersList, editAnswer, deleteAnswer } = props;
 
   return (
     <ul>
@@ -11,6 +11,7 @@ export default function AnswersList(props) {
             answerItem={answerItem}
             key={answerItem.id}
             editAnswer={editAnswer}
+            deleteAnswer={deleteAnswer}
           />
         ))}
     </ul>
