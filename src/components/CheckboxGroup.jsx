@@ -1,0 +1,54 @@
+export default function CheckboxGroup({ handleInput, spendTime }) {
+  return (
+    <ul>
+      <li>
+        <label>
+          <input
+            name="spendTime"
+            type="checkbox"
+            value="swimming"
+            checked={spendTime.includes("swimming")}
+            onChange={handleInput}
+          />
+          Swimming
+        </label>
+      </li>
+      <li>
+        <label>
+          <input
+            name="spendTime"
+            type="checkbox"
+            value="bathing"
+            checked={spendTime.includes("bathing")}
+            onChange={handleInput}
+          />
+          Bathing
+        </label>
+      </li>
+      <li>
+        <label>
+          <input
+            name="spendTime"
+            type="checkbox"
+            value="chatting"
+            checked={spendTime.includes("chatting")}
+            onChange={handleInput}
+          />
+          Chatting
+        </label>
+      </li>
+      <li>
+        <label>
+          <input
+            name="spendTime"
+            type="checkbox"
+            value="noTime"
+            checked={spendTime.includes("noTime")}
+            onChange={handleInput}
+          />
+          I don't like to spend time with it
+        </label>
+      </li>
+    </ul>
+  );
+}
